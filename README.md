@@ -48,9 +48,16 @@ services:
       POSTGRES_USER: 'user'
       POSTGRES_PASSWORD: 'password'
     ports:
-      - "5432:5432"
+      - "5432:5432" ##change the port number to avoid ERROR "Role $USER doesn't exit"
 ```
 In the application.properties , specify
 ```
 spring.jpa.hibernate.ddl-auto=update
+```
+Change the port number in your compose.yaml file to avoid conflicts with the defaul port number of the postgres db installed in your system. 
+
+```
+ports:
+    e.g 
+    - "5433:5432"
 ```
